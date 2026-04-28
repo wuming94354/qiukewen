@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>仇科文 | 全栈自动化工程师</title>
+    <!-- 使用可靠的 CDN 加载 Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 加载图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
@@ -17,6 +19,9 @@
         body { 
             font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; 
             scroll-behavior: smooth; 
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
         }
 
         .glass-nav {
@@ -29,18 +34,6 @@
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             position: relative;
             overflow: hidden;
-        }
-
-        /* 动态背景点缀 */
-        .hero-gradient::before {
-            content: '';
-            position: absolute;
-            top: -10%;
-            left: -10%;
-            width: 50%;
-            height: 50%;
-            background: radial-gradient(circle, rgba(0, 164, 228, 0.1) 0%, transparent 70%);
-            z-index: 1;
         }
 
         .profile-img-container {
@@ -65,6 +58,10 @@
         .award-badge {
             background: linear-gradient(90deg, #f59e0b 0%, #d97706 100%);
         }
+
+        [data-i18n] {
+            transition: opacity 0.3s ease;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -72,48 +69,51 @@
     <!-- 导航栏 -->
     <nav class="fixed w-full z-50 glass-nav border-b border-slate-200">
         <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-            <div class="text-xl font-extrabold text-[#004a87] tracking-wider">仇科文 . CV</div>
-            <div class="hidden md:flex space-x-8 text-sm font-bold text-slate-500">
-                <a href="#about" class="hover:text-[#00a4e4] transition-colors">关于我</a>
-                <a href="#education" class="hover:text-[#00a4e4] transition-colors">教育/荣誉</a>
-                <a href="#skills" class="hover:text-[#00a4e4] transition-colors">技术域</a>
-                <a href="#projects" class="hover:text-[#00a4e4] transition-colors">项目复盘</a>
-                <a href="mailto:wuming94354@gmail.com" class="text-[#00a4e4]">联系我</a>
+            <div class="text-xl font-extrabold text-[#004a87] tracking-wider">仇科文 <span data-i18n="nav_title">简历</span></div>
+            <div class="flex items-center space-x-4 md:space-x-8">
+                <div class="hidden md:flex space-x-8 text-sm font-bold text-slate-500">
+                    <a href="#about" class="hover:text-[#00a4e4] transition-colors" data-i18n="nav_about">关于我</a>
+                    <a href="#education" class="hover:text-[#00a4e4] transition-colors" data-i18n="nav_edu">教育/荣誉</a>
+                    <a href="#skills" class="hover:text-[#00a4e4] transition-colors" data-i18n="nav_skills">技术矩阵</a>
+                    <a href="#projects" class="hover:text-[#00a4e4] transition-colors" data-i18n="nav_projects">项目复盘</a>
+                </div>
+                <button id="lang-switch" class="px-3 py-1 border border-[#00a4e4] text-[#00a4e4] text-xs font-bold rounded hover:bg-[#00a4e4] hover:text-white transition-all">
+                    English
+                </button>
             </div>
         </div>
     </nav>
 
-    <!-- 英雄区 (Hero Section) -->
+    <!-- 英雄区 -->
     <header id="about" class="hero-gradient pt-32 pb-20 px-6 text-center">
         <div class="relative z-10 max-w-4xl mx-auto">
-            <!-- 个人照片 -->
             <div class="profile-img-container mb-6 inline-block">
                 <div class="w-40 h-40 md:w-48 md:h-48 rounded-full border-[6px] border-white/10 shadow-2xl overflow-hidden bg-slate-800 mx-auto">
+                    <!-- 使用你上传的 profile.jpg -->
                     <img src="profile.jpg" alt="仇科文头像" class="w-full h-full object-cover">
                 </div>
-                <!-- 装饰性光晕 -->
                 <div class="absolute -inset-2 rounded-full bg-blue-500/20 blur-xl -z-10"></div>
             </div>
 
-            <h1 class="text-4xl md:text-6xl font-black text-white mb-4 tracking-tight">仇科文</h1>
-            <h2 class="text-xl md:text-2xl text-blue-400 font-light mb-8 italic">全栈自动化与电气工程师 | 优秀应届毕业生</h2>
+            <h1 class="text-4xl md:text-6xl font-black text-white mb-4 tracking-tight" data-i18n="hero_name">仇科文</h1>
+            <h2 class="text-xl md:text-2xl text-blue-400 font-light mb-8 italic" data-i18n="hero_title">全栈自动化与电气工程师 | 优秀应届毕业生</h2>
             
-            <div class="flex flex-wrap justify-center gap-3 mb-10">
-                <span class="px-4 py-1.5 bg-white/10 rounded-full text-sm text-slate-200 border border-white/10 backdrop-blur-sm">🎓 石家庄职业技术学院 (TOP 5%)</span>
-                <span class="px-4 py-1.5 bg-white/10 rounded-full text-sm text-slate-200 border border-white/10 backdrop-blur-sm">🏆 国际/国家级技能大奖</span>
-                <span class="px-4 py-1.5 bg-white/10 rounded-full text-sm text-slate-200 border border-white/10 backdrop-blur-sm">⚡ PLC/HMI/机器视觉</span>
+            <div class="flex flex-wrap justify-center gap-3 mb-10 text-xs md:text-sm">
+                <span class="px-4 py-1.5 bg-white/10 rounded-full text-slate-200 border border-white/10 backdrop-blur-sm" data-i18n="hero_tag1">🎓 石家庄职业技术学院 (前 5%)</span>
+                <span class="px-4 py-1.5 bg-white/10 rounded-full text-slate-200 border border-white/10 backdrop-blur-sm" data-i18n="hero_tag2">🏆 国际/国家级多项荣誉</span>
+                <span class="px-4 py-1.5 bg-white/10 rounded-full text-slate-200 border border-white/10 backdrop-blur-sm" data-i18n="hero_tag3">⚡ 西门子全系/信捷/机器视觉</span>
             </div>
 
-            <p class="text-lg text-slate-300 leading-relaxed max-w-3xl mx-auto mb-10">
-                技术功底扎实，精通西门子全系控制系统架构。具备<span class="text-white font-bold underline decoration-[#00a4e4]">模块化编程思维、SCL 算法开发能力与工业互联网协同制造经验</span>。可无缝衔接企业级智能产线研发与联调工作。
+            <p class="text-lg text-slate-300 leading-relaxed max-w-3xl mx-auto mb-10" data-i18n="hero_desc">
+                精通西门子 TIA Portal 控制系统，具备深厚的 SCL 算法开发及 FB 块封装能力。在多次顶级技能大赛中担任核心成员，能够处理复杂的工业网络通讯及跨平台（MES/HMI）数据集成，接受全国出差。
             </p>
 
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="tel:13463381130" class="bg-[#00a4e4] text-white px-8 py-3 rounded-md font-bold shadow-lg shadow-blue-500/30 hover:-translate-y-1 transition-all">
                     <i class="fas fa-phone-alt mr-2"></i> 134-6338-1130
                 </a>
-                <a href="#projects" class="bg-white/5 text-white border border-white/20 px-8 py-3 rounded-md font-bold hover:bg-white/20 transition-all">
-                    查看实战项目
+                <a href="mailto:wuming94354@gmail.com" class="bg-white/5 text-white border border-white/20 px-8 py-3 rounded-md font-bold hover:bg-white/20 transition-all" data-i18n="btn_contact">
+                    联系我
                 </a>
             </div>
         </div>
@@ -123,63 +123,50 @@
     <section id="education" class="py-20 px-6">
         <div class="max-w-6xl mx-auto">
             <h3 class="text-3xl font-extrabold text-slate-900 mb-12 flex items-center">
-                <span class="w-2 h-8 bg-[#00a4e4] mr-4"></span>教育背景与硬核荣誉
+                <span class="w-2 h-8 bg-[#00a4e4] mr-4"></span><span data-i18n="sec_edu_title">教育背景与获奖荣誉</span>
             </h3>
             
             <div class="grid md:grid-cols-5 gap-8">
-                <!-- 教育卡片 -->
                 <div class="md:col-span-2 bg-white p-8 rounded-xl shadow-sm border border-slate-100">
                     <h4 class="text-xl font-bold text-[#004a87] mb-6 flex items-center">
-                        <i class="fas fa-graduation-cap mr-3"></i> 教育经历
+                        <i class="fas fa-graduation-cap mr-3"></i> <span data-i18n="edu_label">教育经历</span>
                     </h4>
                     <div class="space-y-4">
                         <div>
-                            <p class="font-bold text-lg">石家庄职业技术学院</p>
-                            <p class="text-slate-500">电气自动化技术 · 专科</p>
-                            <p class="text-sm text-[#00a4e4] mt-1 italic">2024.09 - 2027.06 (在读)</p>
+                            <p class="font-bold text-lg" data-i18n="edu_school">石家庄职业技术学院</p>
+                            <p class="text-slate-500" data-i18n="edu_major">电气自动化技术 · 专科</p>
+                            <p class="text-sm text-[#00a4e4] mt-1 font-bold italic" data-i18n="edu_rank">专业排名前 5%</p>
+                            <p class="text-xs text-slate-400">2024.09 - 2027.06</p>
                         </div>
-                        <p class="text-sm text-slate-600 leading-relaxed pt-2 border-t border-slate-50">
-                            <strong>主修课程：</strong>PLC控制技术、变频调速与伺服、电力电子技术。
+                        <p class="text-sm text-slate-600 leading-relaxed pt-4 border-t border-slate-50" data-i18n="edu_courses">
+                            <strong>核心课程：</strong>PLC控制技术与应用、电路基础、模电/数电、变频调速与伺服、电力电子技术。
                         </p>
-                        <div class="bg-amber-50 p-3 rounded-lg border border-amber-100">
-                            <span class="text-amber-700 font-bold text-sm">★ 学业表现：专业排名前 5%</span>
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
+                            <span class="text-slate-700 font-bold text-xs" data-i18n="edu_cert"><i class="fas fa-certificate text-amber-500 mr-2"></i>可编程逻辑控制器职业技能(中级)</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- 竞赛勋章墙 -->
                 <div class="md:col-span-3 bg-slate-900 p-8 rounded-xl shadow-xl text-white">
                     <h4 class="text-xl font-bold text-blue-400 mb-8 flex items-center">
-                        <i class="fas fa-medal mr-3"></i> 竞赛战绩 (实战能力验证)
+                        <i class="fas fa-medal mr-3"></i> <span data-i18n="award_label">荣誉奖项 (竞赛战绩)</span>
                     </h4>
-                    <div class="grid gap-4">
-                        <div class="flex items-start gap-4 p-4 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                            <span class="award-badge text-[10px] font-bold px-2 py-1 rounded text-white mt-1 uppercase">International</span>
-                            <div>
-                                <p class="font-bold">一带一路金砖国家技能发展大赛 · 银奖</p>
-                                <p class="text-sm text-slate-400">工业互联网协同制造赛项 (2025)</p>
-                            </div>
+                    <div class="grid gap-4 text-xs md:text-sm">
+                        <div class="flex items-start gap-4 p-3 rounded-lg bg-white/5 border border-white/10 hover:border-blue-400/50 transition-colors">
+                            <span class="award-badge font-bold px-2 py-1 rounded text-white text-[10px] uppercase">Inter</span>
+                            <div data-i18n="award_1">2025 一带一路金砖国家技能发展大赛 · 银奖 (工业互联网协同制造赛项)</div>
                         </div>
-                        <div class="flex items-start gap-4 p-4 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                            <span class="bg-blue-600 text-[10px] font-bold px-2 py-1 rounded text-white mt-1 uppercase">Province</span>
-                            <div>
-                                <p class="font-bold text-blue-300">河北省职业技能大赛 · 二等奖第一名</p>
-                                <p class="text-sm text-slate-400">工业网络智能控制与维护 (2026)</p>
-                            </div>
+                        <div class="flex items-start gap-4 p-3 rounded-lg bg-white/5 border border-white/10 hover:border-blue-400/50 transition-colors">
+                            <span class="bg-blue-600 font-bold px-2 py-1 rounded text-white text-[10px] uppercase">Prov</span>
+                            <div data-i18n="award_2">2026 河北省职业技能大赛 · 二等奖第一名 (工业网络智能控制与维护)</div>
                         </div>
-                        <div class="flex items-start gap-4 p-4 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                            <span class="bg-slate-600 text-[10px] font-bold px-2 py-1 rounded text-white mt-1 uppercase">National</span>
-                            <div>
-                                <p class="font-bold">黄炎培职业教育 AI+ 赛项 · 全国三等奖</p>
-                                <p class="text-sm text-slate-400">信息技术应用创新技能大赛 (2025)</p>
-                            </div>
+                        <div class="flex items-start gap-4 p-3 rounded-lg bg-white/5 border border-white/10 hover:border-blue-400/50 transition-colors">
+                            <span class="bg-orange-600 font-bold px-2 py-1 rounded text-white text-[10px] uppercase">Natl</span>
+                            <div data-i18n="award_3">2025 黄炎培职业教育 AI+ 全国三等奖 (信息技术应用创新技能大赛)</div>
                         </div>
-                        <div class="flex items-start gap-4 p-4 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
-                            <span class="bg-emerald-600 text-[10px] font-bold px-2 py-1 rounded text-white mt-1 uppercase">World Selection</span>
-                            <div>
-                                <p class="font-bold text-emerald-400">世界职业院校技能大赛 · 三等奖</p>
-                                <p class="text-sm text-slate-400">智能装备应用赛项 (2025)</p>
-                            </div>
+                        <div class="flex items-start gap-4 p-3 rounded-lg bg-white/5 border border-white/10 hover:border-blue-400/50 transition-colors">
+                            <span class="bg-emerald-600 font-bold px-2 py-1 rounded text-white text-[10px] uppercase">World</span>
+                            <div data-i18n="award_4">2025 世界职业院校技能大赛 · 争夺赛铜奖 (智能装备应用赛项)</div>
                         </div>
                     </div>
                 </div>
@@ -190,64 +177,48 @@
     <!-- 技能矩阵 -->
     <section id="skills" class="py-20 bg-slate-100">
         <div class="max-w-6xl mx-auto px-6">
-            <h3 class="text-3xl font-extrabold text-center text-slate-900 mb-16">核心技术域与工程落地能力</h3>
+            <h3 class="text-3xl font-extrabold text-center text-slate-900 mb-16" data-i18n="sec_skills_title">专业技术矩阵</h3>
             
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- 电气与PLC -->
-                <div class="skill-card bg-white p-8 rounded-2xl transition-all border border-slate-200">
-                    <div class="flex items-center mb-6">
-                        <div class="w-14 h-14 bg-blue-50 text-[#004a87] rounded-xl flex items-center justify-center text-2xl mr-4">
-                            <i class="fas fa-microchip"></i>
-                        </div>
-                        <h4 class="text-xl font-bold">电气设计与高级 PLC 编程</h4>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- PLC & HMI -->
+                <div class="skill-card bg-white p-6 rounded-2xl border border-slate-200">
+                    <div class="w-12 h-12 bg-blue-50 text-[#004a87] rounded-xl flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-microchip"></i>
                     </div>
-                    <ul class="space-y-4 text-slate-600 text-sm md:text-base">
-                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#00a4e4] mt-1"></i> <span><strong>EPLAN P8:</strong> 熟练绘制原理图及控制柜 2D 布局。</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#00a4e4] mt-1"></i> <span><strong>西门子博途:</strong> 精通 S7-1200/1500 及信捷 XD 编程。</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#00a4e4] mt-1"></i> <span><strong>SCL 语言:</strong> 擅长处理数据算法（如冒泡排序）与复杂逻辑封装。</span></li>
+                    <h4 class="font-bold mb-4" data-i18n="skill_h1">PLC 与 HMI 组态</h4>
+                    <ul class="space-y-2 text-slate-600 text-sm" data-i18n="skill_list1">
+                        <li>• <strong>西门子博途 (TIA):</strong> S7-1200/1500</li>
+                        <li>• <strong>国产替代:</strong> 精通信捷 (XD) 系列 PLC</li>
+                        <li>• <strong>人机交互:</strong> 西门子 / 昆仑通态 HMI</li>
+                        <li>• <strong>语言:</strong> LAD, SCL (复杂逻辑编写)</li>
                     </ul>
                 </div>
 
-                <!-- 工业网络 -->
-                <div class="skill-card bg-white p-8 rounded-2xl transition-all border border-slate-200">
-                    <div class="flex items-center mb-6">
-                        <div class="w-14 h-14 bg-blue-50 text-[#00a4e4] rounded-xl flex items-center justify-center text-2xl mr-4">
-                            <i class="fas fa-network-wired"></i>
-                        </div>
-                        <h4 class="text-xl font-bold">工业互联网与 IT/OT 融合</h4>
+                <!-- 驱动与网络 -->
+                <div class="skill-card bg-white p-6 rounded-2xl border border-slate-200">
+                    <div class="w-12 h-12 bg-blue-50 text-[#00a4e4] rounded-xl flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-network-wired"></i>
                     </div>
-                    <ul class="space-y-4 text-slate-600 text-sm md:text-base">
-                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#00a4e4] mt-1"></i> <span><strong>总线协议:</strong> 精通 PROFINET、Modbus TCP/RTU 高效通讯。</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#00a4e4] mt-1"></i> <span><strong>MES 对接:</strong> 实现跨线设备联调与生产数据闭环管理。</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-[#00a4e4] mt-1"></i> <span><strong>网关配置:</strong> 独立搭建工业树状/环状网络架构。</span></li>
+                    <h4 class="font-bold mb-4" data-i18n="skill_h2">驱动控制与工业网络</h4>
+                    <ul class="space-y-2 text-slate-600 text-sm" data-i18n="skill_list2">
+                        <li>• <strong>通讯:</strong> Profinet, Modbus TCP/RTU</li>
+                        <li>• <strong>变频器:</strong> 西门子 V20 / G120 调试</li>
+                        <li>• <strong>运动控制:</strong> 伺服、步进、PID 调节</li>
+                        <li>• <strong>网络:</strong> 工业网关配置, 树/环状拓扑</li>
                     </ul>
                 </div>
 
-                <!-- 驱动控制 -->
-                <div class="skill-card bg-white p-8 rounded-2xl transition-all border border-slate-200">
-                    <div class="flex items-center mb-6">
-                        <div class="w-14 h-14 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center text-2xl mr-4">
-                            <i class="fas fa-gears"></i>
-                        </div>
-                        <h4 class="text-xl font-bold">运动控制与驱动技术</h4>
+                <!-- 视觉与集成 -->
+                <div class="skill-card bg-white p-6 rounded-2xl border border-slate-200">
+                    <div class="w-12 h-12 bg-blue-50 text-emerald-500 rounded-xl flex items-center justify-center text-xl mb-4">
+                        <i class="fas fa-eye"></i>
                     </div>
-                    <ul class="space-y-4 text-slate-600 text-sm md:text-base">
-                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-orange-500 mt-1"></i> <span><strong>变频器:</strong> 熟练调试西门子 V20/G120 及多品牌伺服系统。</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-orange-500 mt-1"></i> <span><strong>TO 对象:</strong> 掌握工艺对象运动控制指令与回零逻辑。</span></li>
-                    </ul>
-                </div>
-
-                <!-- 机器人 -->
-                <div class="skill-card bg-white p-8 rounded-2xl transition-all border border-slate-200">
-                    <div class="flex items-center mb-6">
-                        <div class="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-2xl mr-4">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <h4 class="text-xl font-bold">机器人与视觉集成</h4>
-                    </div>
-                    <ul class="space-y-4 text-slate-600 text-sm md:text-base">
-                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-emerald-500 mt-1"></i> <span><strong>ABB 机器人:</strong> 具备与 PLC 信号联动及轨迹调试经验。</span></li>
-                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-emerald-500 mt-1"></i> <span><strong>视觉系统:</strong> 掌握海康视觉与机器人/PLC 的手眼标定联调。</span></li>
+                    <h4 class="font-bold mb-4" data-i18n="skill_h3">视觉机器人与 MES</h4>
+                    <ul class="space-y-2 text-slate-600 text-sm" data-i18n="skill_list3">
+                        <li>• <strong>机器视觉:</strong> 海康威视 BLOB 分析</li>
+                        <li>• <strong>工业机器人:</strong> ABB 机器人通讯调试</li>
+                        <li>• <strong>系统集成:</strong> MES 系统双向数据交互</li>
+                        <li>• <strong>绘图工具:</strong> EPLAN P8 原理图设计</li>
                     </ul>
                 </div>
             </div>
@@ -257,40 +228,34 @@
     <!-- 项目复盘 -->
     <section id="projects" class="py-20 px-6">
         <div class="max-w-5xl mx-auto">
-            <h3 class="text-3xl font-extrabold text-slate-900 mb-16 text-center">深度项目复盘</h3>
+            <h3 class="text-3xl font-extrabold text-slate-900 mb-16 text-center" data-i18n="sec_proj_title">深度项目复盘</h3>
             
-            <!-- 项目 1 -->
             <div class="project-case bg-white rounded-2xl shadow-xl overflow-hidden mb-12 project-border">
                 <div class="p-8 md:p-12">
-                    <div class="flex flex-wrap justify-between items-center gap-4 mb-6">
-                        <h4 class="text-2xl font-black text-[#004a87]">工业网络智能控制与维护赛项实战</h4>
-                        <span class="px-3 py-1 bg-blue-50 text-blue-600 text-xs font-bold rounded uppercase">主要负责人</span>
+                    <div class="flex flex-wrap justify-between items-center gap-4 mb-8">
+                        <div>
+                            <h4 class="text-2xl font-black text-[#004a87]" data-i18n="proj_name">工业网络智能控制与维护实战 (省赛获奖项目)</h4>
+                            <p class="text-sm text-slate-400 mt-1" data-i18n="proj_time">2025.03 - 2026.01</p>
+                        </div>
+                        <span class="px-4 py-1 bg-blue-50 text-blue-600 text-xs font-bold rounded uppercase" data-i18n="proj_role">项目电气工程师</span>
                     </div>
                     
-                    <div class="flex flex-wrap gap-2 mb-8">
-                        <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold rounded-full">S7-1500</span>
-                        <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">PROFINET</span>
-                        <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold rounded-full">FB封装</span>
-                        <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold rounded-full">冒泡算法</span>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-10">
+                    <div class="grid md:grid-cols-2 gap-12">
                         <div class="space-y-6">
-                            <h5 class="text-lg font-bold text-slate-800 flex items-center"><i class="fas fa-tools mr-2 text-blue-400"></i> 技术攻关点</h5>
-                            <p class="text-slate-600 leading-relaxed text-sm">主导了全系统架构搭建，通过重构产线控制时序，将原本的“延时等待”升级为基于 <strong>DONE 信号</strong> 的闭环反馈控制，极大消除了设备空窗期。</p>
-                            <ul class="text-sm text-slate-600 space-y-3">
-                                <li class="flex items-start gap-2"><i class="fas fa-check text-blue-500 mt-0.5"></i> <span>基于 LAD/SCL 编写核心逻辑，实现多轴伺服精准同步。</span></li>
-                                <li class="flex items-start gap-2"><i class="fas fa-check text-blue-500 mt-0.5"></i> <span>打通 S7-1500 全站通讯，实现跨线设备与 MES 数据交互。</span></li>
-                            </ul>
+                            <div class="border-l-4 border-[#00a4e4] pl-4">
+                                <h5 class="text-base font-bold text-slate-800" data-i18n="proj_h1">多维通讯与组态</h5>
+                                <p class="text-slate-500 text-sm" data-i18n="proj_p1">基于博途完成架构，通过 Profinet 采集多维传感器，并运用 S7 协议实现跨线设备联调。</p>
+                            </div>
+                            <div class="border-l-4 border-[#00a4e4] pl-4">
+                                <h5 class="text-base font-bold text-slate-800" data-i18n="proj_h2">核心算法与逻辑</h5>
+                                <p class="text-slate-500 text-sm" data-i18n="proj_p2">模块化封装 FB 块控制伺服；使用 SCL 编写冒泡排序算法，实现 HMI 端订单自动排队与报警管理。</p>
+                            </div>
                         </div>
-                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-100 flex flex-col justify-center text-center">
-                            <div class="mb-4">
-                                <p class="text-[#00a4e4] font-black text-5xl mb-2">15%</p>
-                                <p class="text-slate-500 text-xs font-bold tracking-widest">生产节拍 (CT) 提升</p>
-                            </div>
-                            <div class="pt-6 border-t border-slate-200">
-                                <p class="text-slate-800 font-bold">🏆 省赛二等奖第一名成果展示</p>
-                            </div>
+                        <div class="bg-blue-600 p-8 rounded-2xl text-white text-center relative">
+                            <i class="fas fa-rocket absolute top-4 right-4 text-white/20 text-3xl"></i>
+                            <p class="text-xs uppercase font-bold tracking-widest mb-2" data-i18n="proj_stat_h">核心业绩：CT 优化</p>
+                            <p class="text-6xl font-black mb-2">15%</p>
+                            <p class="text-sm opacity-80" data-i18n="proj_stat_d">将“延时等待”升级为基于 DONE 信号的闭环反馈，消除设备空窗期。</p>
                         </div>
                     </div>
                 </div>
@@ -298,31 +263,134 @@
         </div>
     </section>
 
-    <!-- 页脚与联系 -->
+    <!-- 页脚 -->
     <footer class="bg-slate-950 text-slate-400 py-16 px-6 border-t border-white/5">
         <div class="max-w-4xl mx-auto text-center">
-            <h3 class="text-white text-2xl font-black mb-8">联系我 / Contact</h3>
-            
-            <div class="flex flex-wrap justify-center gap-10 mb-12">
-                <div class="space-y-2">
-                    <p class="text-xs font-bold uppercase tracking-widest text-blue-500">Email</p>
-                    <p class="text-white">wuming94354@gmail.com</p>
-                </div>
-                <div class="space-y-2">
-                    <p class="text-xs font-bold uppercase tracking-widest text-blue-500">Phone</p>
-                    <p class="text-white">134-6338-1130</p>
-                </div>
-                <div class="space-y-2">
-                    <p class="text-xs font-bold uppercase tracking-widest text-blue-500">Location</p>
-                    <p class="text-white">河北省秦皇岛市</p>
-                </div>
+            <h3 class="text-white text-2xl font-black mb-8" data-i18n="footer_contact">联系我 / Contact</h3>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6 text-white mb-10">
+                <div class="flex items-center"><i class="fas fa-envelope mr-2 text-blue-400"></i> wuming94354@gmail.com</div>
+                <div class="flex items-center"><i class="fas fa-phone mr-2 text-blue-400"></i> 134-6338-1130</div>
+                <div class="flex items-center"><i class="fas fa-map-marker-alt mr-2 text-blue-400"></i> <span data-i18n="footer_loc">河北秦皇岛 / 石家庄</span></div>
             </div>
-            
-            <div class="pt-10 border-t border-white/5 text-[10px] uppercase tracking-widest">
-                &copy; 2024 - 2027 仇科文 | 技术立身 · 拥抱智造 · 接受全国出差
+            <div class="pt-10 border-t border-white/5 text-[10px] uppercase mt-8" data-i18n="footer_copy">
+                &copy; 2024 - 2027 仇科文 | 致力于电气自动化与智造工程 | 接受加班与全国出差
             </div>
         </div>
     </footer>
 
+    <script>
+        const translations = {
+            'zh': {
+                'nav_title': '简历',
+                'nav_about': '关于我',
+                'nav_edu': '教育/荣誉',
+                'nav_skills': '技术矩阵',
+                'nav_projects': '项目复盘',
+                'hero_name': '仇科文',
+                'hero_title': '全栈自动化与电气工程师 | 优秀应届毕业生',
+                'hero_tag1': '🎓 石家庄职业技术学院 (前 5%)',
+                'hero_tag2': '🏆 国际/国家级多项荣誉',
+                'hero_tag3': '⚡ 西门子全系/信捷/机器视觉',
+                'hero_desc': '精通西门子 TIA Portal 控制系统，具备深厚的 SCL 算法开发及 FB 块封装能力。在多次顶级技能大赛中担任核心成员，能够处理复杂的工业网络通讯及跨平台（MES/HMI）数据集成，接受全国出差。',
+                'btn_contact': '发送邮件',
+                'sec_edu_title': '教育背景与获奖荣誉',
+                'edu_label': '教育经历',
+                'edu_school': '石家庄职业技术学院',
+                'edu_major': '电气自动化技术 · 专科',
+                'edu_rank': '专业排名前 5%',
+                'edu_courses': '<strong>核心课程：</strong>PLC控制技术与应用、电路基础、模电/数电、变频调速与伺服、电力电子技术。',
+                'edu_cert': '<i class="fas fa-certificate text-amber-500 mr-2"></i>可编程逻辑控制器职业技能 (中级)',
+                'award_label': '荣誉奖项 (竞赛战绩)',
+                'award_1': '2025 一带一路金砖国家技能发展大赛 · 银奖 (工业互联网协同制造赛项)',
+                'award_2': '2026 河北省职业技能大赛 · 二等奖第一名 (工业网络智能控制与维护)',
+                'award_3': '2025 黄炎培职业教育 AI+ 全国三等奖 (信息技术应用创新技能大赛)',
+                'award_4': '2025 世界职业院校技能大赛 · 争夺赛铜奖 (智能装备应用赛项)',
+                'sec_skills_title': '专业技术矩阵',
+                'skill_h1': 'PLC 与 HMI 组态',
+                'skill_list1': '<li>• <strong>西门子博途 (TIA):</strong> S7-1200/1500</li><li>• <strong>国产替代:</strong> 精通信捷 (XD) 系列 PLC</li><li>• <strong>人机交互:</strong> 西门子 / 昆仑通态 HMI</li><li>• <strong>语言:</strong> LAD, SCL (复杂逻辑编写)</li>',
+                'skill_h2': '驱动控制与工业网络',
+                'skill_list2': '<li>• <strong>通讯:</strong> Profinet, Modbus TCP/RTU</li><li>• <strong>变频器:</strong> 西门子 V20 / G120 调试</li><li>• <strong>运动控制:</strong> 伺服、步进、PID 调节</li><li>• <strong>网络:</strong> 工业网关配置, 树/环状拓扑</li>',
+                'skill_h3': '视觉机器人与 MES',
+                'skill_list3': '<li>• <strong>机器视觉:</strong> 海康威视 BLOB 分析</li><li>• <strong>工业机器人:</strong> ABB 机器人通讯调试</li><li>• <strong>系统集成:</strong> MES 系统双向数据交互</li><li>• <strong>绘图工具:</strong> EPLAN P8 原理图设计</li>',
+                'sec_proj_title': '深度项目复盘',
+                'proj_name': '工业网络智能控制与维护实战 (省赛获奖项目)',
+                'proj_time': '2025.03 - 2026.01',
+                'proj_role': '项目电气工程师',
+                'proj_h1': '多维通讯与组态',
+                'proj_p1': '基于博途完成架构，通过 Profinet 采集多维传感器，并运用 S7 协议实现跨线设备联调。',
+                'proj_h2': '核心算法与逻辑',
+                'proj_p2': '模块化封装 FB 块控制伺服；使用 SCL 编写冒泡排序算法，实现 HMI 端订单自动排队与报警管理。',
+                'proj_stat_h': '核心业绩：CT 优化',
+                'proj_stat_d': '将“延时等待”升级为基于 DONE 信号的闭环反馈，消除设备空窗期。',
+                'footer_contact': '联系我 / Contact',
+                'footer_loc': '河北秦皇岛 / 石家庄',
+                'footer_copy': '© 2024 - 2027 仇科文 | 致力于电气自动化与智造工程 | 接受加班与全国出差'
+            },
+            'en': {
+                'nav_title': 'Resume',
+                'nav_about': 'About',
+                'nav_edu': 'Honors',
+                'nav_skills': 'Skills',
+                'nav_projects': 'Projects',
+                'hero_name': 'Kewen Qiu',
+                'hero_title': 'Full-stack Automation & Electrical Engineer',
+                'hero_tag1': '🎓 Shijiazhuang Vocational (Top 5%)',
+                'hero_tag2': '🏆 Multiple Int\'l & National Awards',
+                'hero_tag3': '⚡ Siemens / Xinje / Machine Vision',
+                'hero_desc': 'Proficient in Siemens TIA Portal. Strong capability in SCL algorithm development and FB block encapsulation. Expert in complex industrial networks, MES integration, and open to business travel nationwide.',
+                'btn_contact': 'Email Me',
+                'sec_edu_title': 'Education & Honors',
+                'edu_label': 'Education',
+                'edu_school': 'Shijiazhuang Vocational Tech Institute',
+                'edu_major': 'Electrical Automation Tech',
+                'edu_rank': 'Ranked Top 5%',
+                'edu_courses': '<strong>Core:</strong> PLC, Circuit Theory, Analog/Digital Electronics, Drive Systems.',
+                'edu_cert': '<i class="fas fa-certificate text-amber-500 mr-2"></i>PLC Professional Cert (Intermediate)',
+                'award_label': 'Competitions & Awards',
+                'award_1': 'BRICS Skills Comp · Silver (IIoT Manufacturing)',
+                'award_2': 'Hebei Skills Comp · 2nd Prize 1st Place (Industrial Network)',
+                'award_3': 'Huang Yanpei AI+ · National 3rd Prize (IT Innovation)',
+                'award_4': 'World Vocational Skills Comp · Bronze (Smart Equipment)',
+                'sec_skills_title': 'Technical Matrix',
+                'skill_h1': 'PLC & HMI Configuration',
+                'skill_list1': '<li>• <strong>TIA Portal:</strong> S7-1200/1500</li><li>• <strong>Xinje:</strong> XD Series PLC Expert</li><li>• <strong>HMI:</strong> Siemens / MCGS</li><li>• <strong>Languages:</strong> LAD, SCL (Complex Logic)</li>',
+                'skill_h2': 'Drives & Networks',
+                'skill_list2': '<li>• <strong>Comm:</strong> Profinet, Modbus TCP/RTU</li><li>• <strong>Drives:</strong> Siemens V20 / G120 Debugging</li><li>• <strong>Motion:</strong> Servo, Stepper, PID Tuning</li><li>• <strong>Network:</strong> Gateway Config, Tree/Ring Topology</li>',
+                'skill_h3': 'Vision, Robotics & MES',
+                'skill_list3': '<li>• <strong>Vision:</strong> Hikvision BLOB Analysis</li><li>• <strong>Robotics:</strong> ABB Robot Integration</li><li>• <strong>System:</strong> MES Bidirectional Data Sync</li><li>• <strong>Design:</strong> EPLAN P8 Electrical Drawing</li>',
+                'sec_proj_title': 'Case Study',
+                'proj_name': 'Industrial Network Intelligence (Awarded Project)',
+                'proj_time': '2025.03 - 2026.01',
+                'proj_role': 'Electrical Engineer',
+                'proj_h1': 'Comm & Config',
+                'proj_p1': 'TIA Portal architecture, multi-sensor data via Profinet, and cross-line sync via S7 protocol.',
+                'proj_h2': 'Algorithms',
+                'proj_p2': 'Modular FB blocks for motion; SCL-based Bubble Sort for HMI order management.',
+                'proj_stat_h': 'Performance: CT Optimization',
+                'proj_stat_d': 'Upgraded logic from "Delay" to "DONE-signal" feedback, boosting cycle time by 15%.',
+                'footer_contact': 'Contact Me',
+                'footer_loc': 'Qinhuangdao / Shijiazhuang, Hebei',
+                'footer_copy': '© 2024 - 2027 Kewen Qiu | Industrial Automation Expert'
+            }
+        };
+
+        let currentLang = 'zh';
+        const langBtn = document.getElementById('lang-switch');
+
+        langBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'zh' ? 'en' : 'zh';
+            langBtn.innerText = currentLang === 'zh' ? 'English' : '中文';
+            updateLanguage();
+        });
+
+        function updateLanguage() {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerHTML = translations[currentLang][key];
+                }
+            });
+        }
+    </script>
 </body>
 </html>
